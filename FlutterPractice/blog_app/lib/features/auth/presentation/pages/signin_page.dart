@@ -2,6 +2,7 @@ import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/gradient_button.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
@@ -72,25 +73,21 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 height: 15.0,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, SignUpPage.routeName);
-                },
-                child: RichText(
-                  text: TextSpan(
-                      text: "Don't have an account?",
-                      style: Theme.of(context).textTheme.titleMedium,
-                      children: [
-                        TextSpan(
-                          text: ' Sign Up',
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    color: AppPallete.gradient2,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+              RichText(
+                text: TextSpan(
+                    text: "Don't have an account?",
+                    style: Theme.of(context).textTheme.titleMedium,
+                    children: [
+                     TextSpan(
+                        text: ' Sign Up',
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: AppPallete.gradient2,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ]),
-                ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Navigator.pushNamed(context, SignUpPage.routeName),
+                      ),
+                    ]),
               ),
             ],
           ),
